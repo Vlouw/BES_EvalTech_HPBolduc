@@ -8,3 +8,18 @@
     flex-direction: column;
     align-items: center;
 }
+
+.top {
+    display: flex;
+    justify-content: center;
+    align-items: middle;
+}
+
+.top img {
+    height: 8vh;
+    margin: 0 2vw
+}
+
+.top h1 {
+    color: red;
+}
