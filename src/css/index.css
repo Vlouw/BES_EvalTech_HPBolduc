@@ -1,0 +1,10 @@
+.notfound {
+    display: flex;
+    justify-content: center;
+}
+
+.mainPage-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
