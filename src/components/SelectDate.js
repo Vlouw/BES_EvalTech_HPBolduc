@@ -7,9 +7,9 @@ import "react-datepicker/dist/react-datepicker.css";
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 const SelectDate = () => {
-  const [startDate, setStartDate] = useState(new Date());
+  const [date, setDate] = useState(new Date());
   return (
-    <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+    <DatePicker dateFormat="yyyy/MM/dd" selected={date} onChange={(date) => setDate(date)} />
   );
 };
 

@@ -13,6 +13,8 @@
     display: flex;
     justify-content: center;
     align-items: middle;
+    height: 10vh;
+    /*border: black solid 2px;*/
 }
 
 .top img {
@@ -22,4 +24,79 @@
 
 .top h1 {
     color: red;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: middle;
+    height: 15vh;
+    /*border: black solid 2px;*/
+}
+
+.search > div {
+    margin: 0 1vw;
+}
+
+.search div p {
+    text-align: center;
+    margin: 1vh 0 0 0;
+}
+
+.search input {
+    text-align: center;
+}
+
+.toad-inventory {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: middle;
+    height: 73vh;
+    width: 23vw;
+    border: black solid 2px;
+}
+
+.toad-inventory h2{
+    text-align: center;
+}
+
+.toads {
+    width: 100%;
+    padding: 0;
+    height: 60vh;
+    overflow: auto;
+}
+
+.toad-list {
+    display: flex;
+    align-items: center;
+    list-style: none; 
+    border: black 1px solid;
+    border-radius: 20px;
+    margin: 2vh;
+    width: 20vw;
+}
+
+.toad-list img {
+    width: 5vw;
+}
+
+.toad-list > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 2vh;
+    width: 15vw;
+}
+
+.toad-list > div > p {
+    text-align: center;
+    margin: 0.5vh 0;
+}
+
+.toad-name {
+    text-align: center;
+    margin: 0.5vh 0;
 }

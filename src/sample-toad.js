@@ -15,7 +15,8 @@ const toad = {
     goldMushroom: true,
     invincibilityMushroom: true,
     price: 1200,
-    date: 1602196320981
+    date: 1602196320981,
+    available: true
   },
   toad2: {
     name: "Blue Toadette",
@@ -30,7 +31,8 @@ const toad = {
     goldMushroom: false,
     invincibilityMushroom: false,
     price: 800,
-    date: 1642096320981
+    date: 1642096320981,
+    available: true
   },
   toad3: {
     name: "Yellow Toad",
@@ -45,7 +47,8 @@ const toad = {
     goldMushroom: true,
     invincibilityMushroom: false,
     price: 800,
-    date: 1642106320981
+    date: 1642106320981,
+    available: true
   },
   toad4: {
     name: "Green Toad",
@@ -60,7 +63,8 @@ const toad = {
     goldMushroom: false,
     invincibilityMushroom: false,
     price: 500,
-    date: 1602196320981
+    date: 1602196320981,
+    available: true
   },
   toad5: {
     name: "Orange Toadette",
@@ -75,7 +79,8 @@ const toad = {
     goldMushroom: false,
     invincibilityMushroom: false,
     price: 600,
-    date: 1642190320901
+    date: 1642190320901,
+    available: true
   },
   toad6: {
     name: "Green Toadette",
@@ -90,7 +95,8 @@ const toad = {
     goldMushroom: false,
     invincibilityMushroom: true,
     price: 750,
-    date: 1640196300981
+    date: 1640196300981,
+    available: true
   },
   toad7: {
     name: "Blue Toad",
@@ -105,11 +111,12 @@ const toad = {
     goldMushroom: true,
     invincibilityMushroom: true,
     price: 650,
-    date: 1640106320981
+    date: 1640106320981,
+    available: true
   },
   toad8: {
-    name: "Purple Toadette",
-    image: "/images/purpletoadette.png",
+    name: "Pink Toadette",
+    image: "/images/pinktoadette.png",
     desc: "The Power Stars are returning one by one. I feel terrible that I misjudged you.",
     longitude: 45.442357,
     latitude: -73.707505,
@@ -120,7 +127,8 @@ const toad = {
     goldMushroom: true,
     invincibilityMushroom: false,
     price: 900,
-    date: 1642000320981
+    date: 1642000320981,
+    available: true
   },
   toad9: {
     name: "Brown Toadette",
@@ -135,7 +143,8 @@ const toad = {
     goldMushroom: true,
     invincibilityMushroom: true,
     price: 950,
-    date: 1542096020981
+    date: 1542096020981,
+    available: true
   },
   toad10: {
     name: "Purple Toad",
@@ -150,8 +159,9 @@ const toad = {
     goldMushroom: true,
     invincibilityMushroom: false,
     price: 1000,
-    date: 1542190320081
+    date: 1542190320081,
+    available: false
   },
 };
 
-export default fishes;
+export default toad;
