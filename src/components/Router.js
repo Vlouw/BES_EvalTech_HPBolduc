@@ -4,6 +4,7 @@ import MainPage from "./MainPage"
 import App from "./App";
 import NotFound from "./NotFound";
 
+// Router to show the required component
 const Router = () => (
     <BrowserRouter>
         <Switch>

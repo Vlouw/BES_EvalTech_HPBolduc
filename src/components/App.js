@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Header from './Header';
 import Search from './Search';
 import ToadShort from './ToadShort';
+import ToadFull from './ToadFull';
 import Map from './Map'
 import sampleToads from '../sample-toad';
 
@@ -10,7 +11,9 @@ import sampleToads from '../sample-toad';
 class App extends React.Component {
     // Set state
     state = {
-        toads: {}
+        toads: {},
+        toggleFull: false,
+        keyFull: null
     };
 
     // Validate propTypes
@@ -21,6 +24,32 @@ class App extends React.Component {
     // Used for dev to load info from file
     loadSampleToads = () => {
         this.setState({toads: sampleToads});
+    }
+
+    // Update Toad by copying the full state to prevent modification errors / memory leak
+    updateToad = (key, updatedToad) => {
+        const toads = { ...this.state.toads};
+        toads[key] = updatedToad;
+        this.setState({toads});
+    }
+
+    // Update Toad by copying the full state to prevent modification errors / memory leak
+    deleteToad = key => {
+        this.setState({ toggleFull: !this.state.toggleFull });
+        const toads = { ...this.state.toads};
+        console.log(toads[key])
+        toads[key] = null;
+        console.log(toads[key])
+        console.log(toads)
+        //this.setState({toads});
+    }
+
+    // Show/Hide full description
+    toggleFull = (key) => {
+        if (this.state.keyFull == key || this.state.keyFull == null) {
+            this.setState({ toggleFull: !this.state.toggleFull })            
+        }
+        this.setState({ keyFull: key })
     }
 
     // Forced function in React
@@ -34,11 +63,28 @@ class App extends React.Component {
                     <div className='toad-inventory'>
                         <h2>Toad Inventory</h2>
                         <button onClick={this.loadSampleToads}>Load Sample Toads</button>
-                        <ul className="toads">
-                            {Object.keys(this.state.toads).map(key => <ToadShort key={key} index={key} details={this.state.toads[key]}></ToadShort>)}
+                        <ul className="toad-inventory-ul">
+                            {Object.keys(this.state.toads).map(key => <ToadShort 
+                                                                            key={key} 
+                                                                            index={key} 
+                                                                            toad={this.state.toads[key]} 
+                                                                            toggleFull={this.toggleFull}
+                                                                        />)}
                         </ul>
                     </div>
-                    <Map toads={this.state.toads} zoomLevel={17}/>
+                    {this.state.toggleFull && 
+                        <ToadFull 
+                            key={this.state.keyFull} 
+                            index={this.state.keyFull} 
+                            toad={this.state.toads[this.state.keyFull]}
+                            toggleFull={this.toggleFull}
+                            updateToad={this.updateToad}
+                            deleteToad={this.deleteToad}
+                            />} 
+                    <Map 
+                        toads={this.state.toads} 
+                        zoomLevel={17}
+                    />
                 </div>
             </React.Fragment>
         )

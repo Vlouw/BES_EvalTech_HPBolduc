@@ -3,16 +3,20 @@ import PropTypes from "prop-types";
 import GoogleMapReact from 'google-map-react'
 
 class Map extends React.Component {
+  // Default props to Zoom on Montreal
   static defaultProps = {
     center: {lat: 45.55, lng: -73.75},
     zoom: 11
   };
 
+  // Validate propTypes
   static propTypes = {
     toads : PropTypes.object
   };
 
+  // Forced function in React
   render() {
+    // Return Google map
     return (
       <div className="map">
         <h2 className="map-h2">Toad Current Locations</h2>
@@ -23,6 +27,7 @@ class Map extends React.Component {
             defaultCenter={this.props.center}
             defaultZoom={this.props.zoom}
           >
+            {/*Add markers for Available Toads*/}
             {Object.keys(this.props.toads).map(key => {
                 if (this.props.toads[key].available) {
                   return (

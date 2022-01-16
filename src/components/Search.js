@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from "prop-types";
 import SelectDate from './SelectDate';
 
-
 class Search extends React.Component {
     // Forced function in React
     render() {
