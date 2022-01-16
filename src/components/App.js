@@ -6,6 +6,7 @@ import ToadShort from './ToadShort';
 import ToadFull from './ToadFull';
 import Map from './Map'
 import sampleToads from '../sample-toad';
+import base from "../base";
 
 
 class App extends React.Component {
@@ -19,6 +20,19 @@ class App extends React.Component {
     // Validate propTypes
     static propTypes = {
     
+    }
+
+    // On page load - sync with firebase
+    componentDidMount() {
+        this.ref = base.syncState(`/toads`, {
+            context: this,
+            state: 'toads'
+        });
+    }
+
+    // On page unload - unlink firebase
+    componentWillUnmount() {
+        base.removeBinding(this.ref);
     }
 
     // Used for dev to load info from file
@@ -45,7 +59,12 @@ class App extends React.Component {
     deleteToad = key => {
         this.setState({ toggleFull: !this.state.toggleFull });
         const toads = { ...this.state.toads};
-        delete toads[key];
+        
+        // Delete when not sync'ed with Firebase
+        // delete toads[key];
+
+        // Delete when sync'ed with Firebase
+        toads[key] = null;
         this.setState({toads});
     }
 
@@ -67,7 +86,7 @@ class App extends React.Component {
                 <div className='div-bot'>
                     <div className='toad-inventory'>
                         <h2>Toad Inventory</h2>
-                        <button onClick={this.loadSampleToads}>Load Sample Toads</button>
+                        <button onClick={this.loadSampleToads}>Load Sample Toads (Dev Button)</button>
                         <ul className="toad-inventory-ul">
                             {Object.keys(this.state.toads).map(key => <ToadShort 
                                                                             key={key} 
