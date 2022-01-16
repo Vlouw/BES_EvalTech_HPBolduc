@@ -29,13 +29,24 @@ class ToadFull extends React.Component {
     }
 
     // Update toad availability
-    handleChange = (available) => {
+    handleChange = (available) => {       
         const updatedToad = {
             ...this.props.toad,
             ['available']: !available
+            //
         };
         this.props.updateToad(this.props.index, updatedToad);
     }
+
+    /* If more then one field can be updated through a form event
+    handleChange = event => {
+        const updatedToad = {
+            ...this.props.toad,
+            [event.currentTarget.name]: event.currentTarget.value
+        };
+        this.props.updateToad(this.props.index, updatedToad);
+    }
+    */
     
     // Force function in React
     render() {

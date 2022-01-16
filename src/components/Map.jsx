@@ -11,7 +11,8 @@ class Map extends React.Component {
 
   // Validate propTypes
   static propTypes = {
-    toads : PropTypes.object
+    toads : PropTypes.object,
+    toggleFull : PropTypes.func
   };
 
   // Forced function in React
@@ -37,6 +38,7 @@ class Map extends React.Component {
                     src={"/images/toad-marker.png"}
                     lat={this.props.toads[key].lat}
                     lng={this.props.toads[key].lng}
+                    onClick={() => this.props.toggleFull(key)}
                     />
                   )
                 }

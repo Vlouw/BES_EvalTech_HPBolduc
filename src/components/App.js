@@ -26,6 +26,14 @@ class App extends React.Component {
         this.setState({toads: sampleToads});
     }
 
+    // Add New Toad
+    addToad = toad => {
+        const toads = {...this.state.toads};
+        toads[`toad${Date.now()}`] = toad;
+        this.setState({ toads });
+        currentTarget.reset();
+    };
+    
     // Update Toad by copying the full state to prevent modification errors / memory leak
     updateToad = (key, updatedToad) => {
         const toads = { ...this.state.toads};
@@ -37,11 +45,8 @@ class App extends React.Component {
     deleteToad = key => {
         this.setState({ toggleFull: !this.state.toggleFull });
         const toads = { ...this.state.toads};
-        console.log(toads[key])
-        toads[key] = null;
-        console.log(toads[key])
-        console.log(toads)
-        //this.setState({toads});
+        delete toads[key];
+        this.setState({toads});
     }
 
     // Show/Hide full description
@@ -84,6 +89,7 @@ class App extends React.Component {
                     <Map 
                         toads={this.state.toads} 
                         zoomLevel={17}
+                        toggleFull={this.toggleFull}
                     />
                 </div>
             </React.Fragment>

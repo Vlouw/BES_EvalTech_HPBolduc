@@ -27,3 +27,7 @@
 .map h2 {
   text-align: center;
 }
+
+.google-map img:hover {
+  cursor: pointer;
+}
