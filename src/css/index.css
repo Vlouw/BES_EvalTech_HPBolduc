@@ -156,3 +156,28 @@
 }
 
 /* -------------- */
+
+/* New Toad*/
+.toad-new {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: middle;
+    height: 73vh;
+    width: 23vw;
+    border: black solid 2px;
+    border-left: none;
+}
+
+.toad-new p {
+    margin: 2vh 0 0 0;
+    font-weight: bold;
+}
+
+.toad-new button {
+    margin: 2vh 0 0 0;
+    font-weight: bold;
+}
+
+/* -------------- */
+

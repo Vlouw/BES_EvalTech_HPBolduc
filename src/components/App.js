@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Header from './Header';
 import Search from './Search';
-import ToadShort from './ToadShort';
+import Inventory from './Inventory';
 import ToadFull from './ToadFull';
+import ToadNew from './ToadNew';
 import Map from './Map'
 import sampleToads from '../sample-toad';
 import base from "../base";
@@ -14,6 +15,7 @@ class App extends React.Component {
     state = {
         toads: {},
         toggleFull: false,
+        toggleNew: false,
         keyFull: null
     };
 
@@ -40,12 +42,11 @@ class App extends React.Component {
         this.setState({toads: sampleToads});
     }
 
-    // Add New Toad
+    // Add Toad
     addToad = toad => {
         const toads = {...this.state.toads};
         toads[`toad${Date.now()}`] = toad;
         this.setState({ toads });
-        currentTarget.reset();
     };
     
     // Update Toad by copying the full state to prevent modification errors / memory leak
@@ -70,10 +71,19 @@ class App extends React.Component {
 
     // Show/Hide full description
     toggleFull = (key) => {
-        if (this.state.keyFull == key || this.state.keyFull == null) {
+        this.setState({ toggleNew: false })
+        
+        if (this.state.keyFull == key || this.state.keyFull == null || this.state.toggleNew) {
             this.setState({ toggleFull: !this.state.toggleFull })            
         }
+        this.setState({ toggleNew: false })
         this.setState({ keyFull: key })
+    }
+    
+    // Show/Hide Create New Toad
+    toggleNew = () => {
+        this.setState({ toggleFull: false })
+        this.setState({ toggleNew: !this.state.toggleNew })          
     }
 
     // Forced function in React
@@ -84,19 +94,13 @@ class App extends React.Component {
                 <Header/>
                 <Search/>
                 <div className='div-bot'>
-                    <div className='toad-inventory'>
-                        <h2>Toad Inventory</h2>
-                        <button onClick={this.loadSampleToads}>Load Sample Toads (Dev Button)</button>
-                        <ul className="toad-inventory-ul">
-                            {Object.keys(this.state.toads).map(key => <ToadShort 
-                                                                            key={key} 
-                                                                            index={key} 
-                                                                            toad={this.state.toads[key]} 
-                                                                            toggleFull={this.toggleFull}
-                                                                        />)}
-                        </ul>
-                    </div>
-                    {this.state.toggleFull && 
+                    <Inventory
+                        toads={this.state.toads}
+                        toggleFull={this.toggleFull}
+                        loadSampleToads={this.loadSampleToads}
+                        toggleNew={this.toggleNew}
+                    />                    
+                    {this.state.toggleFull &&
                         <ToadFull 
                             key={this.state.keyFull} 
                             index={this.state.keyFull} 
@@ -104,7 +108,12 @@ class App extends React.Component {
                             toggleFull={this.toggleFull}
                             updateToad={this.updateToad}
                             deleteToad={this.deleteToad}
-                            />} 
+                            />}                            
+                    {this.state.toggleNew &&
+                        <ToadNew
+                            addToad={this.addToad}
+                            toggleNew={this.toggleNew}
+                        />} 
                     <Map 
                         toads={this.state.toads} 
                         zoomLevel={17}
