@@ -1,0 +1,29 @@
+.map {
+  border: solid 2px black;
+  border-left: 0px;
+  height: 73vh;
+  width: 85vw;
+}
+  
+.google-map {
+  margin: auto auto;
+}
+
+.pin {
+  display: flex;
+  align-items: center;
+  width: 180px;
+  color: var(--main-blue);
+}
+
+.pin-icon {
+  font-size: 4rem;
+}
+
+.pin-text {
+  font-size: 1.3em;
+}
+
+.map h2 {
+  text-align: center;
+}

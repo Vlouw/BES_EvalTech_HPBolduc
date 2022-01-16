@@ -9,6 +9,10 @@
     align-items: center;
 }
 
+.mainPage-form h2{
+    color: red;
+}
+
 .top {
     display: flex;
     justify-content: center;
@@ -99,4 +103,8 @@
 .toad-name {
     text-align: center;
     margin: 0.5vh 0;
+}
+
+.div-bot {
+    display: flex;
 }
