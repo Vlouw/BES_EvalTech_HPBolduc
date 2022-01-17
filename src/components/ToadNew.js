@@ -28,15 +28,15 @@ class ToadNew extends React.Component {
             name: this.nameRef.current.value,
             image: this.imageRef.current.value,
             desc: this.descRef.current.value,
-            lat: this.latRef.current.value,
-            lng: this.lngRef.current.value,
+            lat: parseFloat(this.latRef.current.value),
+            lng: parseFloat(this.lngRef.current.value),
             frontLamp: this.frontLampRef.current.checked ? true : false,
             backpack: this.backpackRef.current.checked ? true : false,
             helmet: this.helmetRef.current.checked ? true : false,
             freeUP: this.freeUPRef.current.checked ? true : false,
             goldMushroom: this.goldMushroomRef.current.checked ? true : false,
             invMushroom: this.invMushroomRef.current.checked ? true : false,
-            price: this.priceRef.current.value,
+            price: parseFloat(this.priceRef.current.value),
             date: Date.now(),
             available: true
         }
@@ -65,27 +65,27 @@ class ToadNew extends React.Component {
                 <p>Amneties:</p>
                 <div>
                     <input type="checkbox" id="frontlampNew" name="frontlampNew" ref={this.frontLampRef} value="frontlampNew"/>
-                    <label for="frontlampNew"> Front Lamp</label>
+                    <label htmlFor="frontlampNew"> Front Lamp</label>
                 </div>
                 <div>
                     <input type="checkbox" id="backpackNew" name="backpackNew" ref={this.backpackRef} value="backpackNew"/>
-                    <label for="backpackNew"> Backpack</label>
+                    <label htmlFor="backpackNew"> Backpack</label>
                 </div>
                 <div>
                     <input type="checkbox" id="helmetNew" name="helmetNew" ref={this.helmetRef} value="helmetNew"/>
-                    <label for="helmetNew"> Helmet</label>
+                    <label htmlFor="helmetNew"> Helmet</label>
                 </div>
                 <div>
                     <input type="checkbox" id="freeUPNew" name="freeUPNew" ref={this.freeUPRef} value="freeUPNew"/>
-                    <label for="freeUPNew"> Free Up</label>
+                    <label htmlFor="freeUPNew"> Free Up</label>
                 </div>
                 <div>
                     <input type="checkbox" id="goldMushroomNew" name="goldMushroomNew" ref={this.goldMushroomRef} value="goldMushroomNew"/>
-                    <label for="goldMushroomNew"> Gold Mushroom</label>
+                    <label htmlFor="goldMushroomNew"> Gold Mushroom</label>
                 </div>
                 <div>
                     <input type="checkbox" id="invMushroomNew" name="invMushroomNew" ref={this.invMushroomRef} value="invMushroomNew"/>
-                    <label for="invMushroomNew"> Invincibility Mushroom</label>
+                    <label htmlFor="invMushroomNew"> Invincibility Mushroom</label>
                 </div>
                 <button type="submit">Add Toad to DB</button>
             </form>

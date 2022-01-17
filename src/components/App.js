@@ -16,7 +16,9 @@ class App extends React.Component {
         toads: {},
         toggleFull: false,
         toggleNew: false,
-        keyFull: null
+        keyFull: null,
+        search: {},
+        filteredToads: {}
     };
 
     // Validate propTypes
@@ -30,6 +32,10 @@ class App extends React.Component {
             context: this,
             state: 'toads'
         });
+
+        setTimeout(() => {
+            this.setState({filteredToads: this.state.toads});
+            }, 500);
     }
 
     // On page unload - unlink firebase
@@ -86,16 +92,77 @@ class App extends React.Component {
         this.setState({ toggleNew: !this.state.toggleNew })          
     }
 
+    // Show/Hide Create New Toad
+    updateSearch = (search) => {
+        this.setState({ search })
+        this.setState({ filteredToads: {} });
+        setTimeout(() => {
+            {Object.keys(this.state.toads).map(key => {
+                console.log(JSON.stringify(this.state.filteredToads))
+                let show = true;
+
+                if (search.minPrice > this.state.toads[key].price) {
+                    show = false;
+                }
+
+                if (search.maxPrice < this.state.toads[key].price) {
+                    show = false;
+                }
+
+                if (search.minDate > this.state.toads[key].date) {
+                    show = false;
+                }
+
+                if (search.maxDate < this.state.toads[key].date) {
+                    show = false;
+                }
+
+                if (search.frontlamp && !this.state.toads[key].frontLamp) {
+                    show = false;
+                }
+
+                if (search.backpack && !this.state.toads[key].backpack) {
+                    show = false;
+                }
+
+                if (search.helmet && !this.state.toads[key].helmet) {
+                    show = false;
+                }
+
+                if (search.freeUP && !this.state.toads[key].freeUP) {
+                    show = false;
+                }
+
+                if (search.goldMushroom && !this.state.toads[key].goldMushroom) {
+                    show = false;
+                }
+
+                if (search.invMushroom && !this.state.toads[key].invMushroom) {
+                    show = false;
+                }
+
+                if (show) {
+                    const filteredToads = { ...this.state.filteredToads};
+                    filteredToads[key] = this.state.toads[key];
+                    this.setState({filteredToads});
+                }
+            })}
+        }, 500);
+    }
+
     // Forced function in React
     render() {
         // Return what we want to show on the APP page
         return (
             <React.Fragment>
                 <Header/>
-                <Search/>
+                <Search 
+                    search={this.state.search}
+                    updateSearch={this.updateSearch}
+                />
                 <div className='div-bot'>
                     <Inventory
-                        toads={this.state.toads}
+                        toads={this.state.filteredToads}
                         toggleFull={this.toggleFull}
                         loadSampleToads={this.loadSampleToads}
                         toggleNew={this.toggleNew}
@@ -115,7 +182,7 @@ class App extends React.Component {
                             toggleNew={this.toggleNew}
                         />} 
                     <Map 
-                        toads={this.state.toads} 
+                        toads={this.state.filteredToads} 
                         zoomLevel={17}
                         toggleFull={this.toggleFull}
                     />
