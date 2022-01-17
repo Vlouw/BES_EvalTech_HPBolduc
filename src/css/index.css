@@ -72,7 +72,7 @@
     justify-content: center;
     align-items: middle;
     height: 73vh;
-    width: 23vw;
+    width: 25vw;
     border: black solid 2px;
 }
 
@@ -154,7 +154,6 @@
 .toad-full button {
     margin: 2vh 0 0 0;
 }
-
 /* -------------- */
 
 /* New Toad*/
@@ -178,6 +177,10 @@
     margin: 2vh 0 0 0;
     font-weight: bold;
 }
-
 /* -------------- */
 
+/* New Toad*/
+.toad-full img {
+    height: 15vh;
+}
+/* -------------- */

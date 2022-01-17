@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {formatPrice} from "../helpers"
+import {formatPrice} from '../helpers';
 import Moment from 'react-moment';
 import 'moment-timezone';
 
@@ -24,29 +24,19 @@ class ToadFull extends React.Component {
             available : PropTypes.bool}),
         toggleFull: PropTypes.func,
         updateToad: PropTypes.func,
+        toggleEdit: PropTypes.func,
         deleteToad: PropTypes.func,
         index: PropTypes.string
-    }
+    };
 
     // Update toad availability
     handleChange = (available) => {       
         const updatedToad = {
             ...this.props.toad,
             ['available']: !available
-            //
         };
         this.props.updateToad(this.props.index, updatedToad);
-    }
-
-    /* If more then one field can be updated through a form event
-    handleChange = event => {
-        const updatedToad = {
-            ...this.props.toad,
-            [event.currentTarget.name]: event.currentTarget.value
-        };
-        this.props.updateToad(this.props.index, updatedToad);
-    }
-    */
+    };
     
     // Force function in React
     render() {
@@ -55,19 +45,19 @@ class ToadFull extends React.Component {
 
         // Return what we want to show in the full description area
         return (
-            <div className="toad-full">
-                <div className="toad-full-close">
+            <div className='toad-full'>
+                <div className='toad-full-close'>
                     <button onClick={() => this.props.toggleFull(this.props.index)}>X</button>  
                 </div>
                 <div>
                     <div>
                         <img src={image} alt={name} />
                     </div>
-                    <h3 className="toad-full-name">{name}
+                    <h3 className='toad-full-name'>{name}
                         <br />
-                        <span className="toad-full-price">{formatPrice(price)}</span>
+                        <span className='toad-full-price'>{formatPrice(price)}</span>
                     </h3>
-                    <p className="toad-full-desc">{desc}</p>
+                    <p className='toad-full-desc'>{desc}</p>
                     <div>
                         <h4>Location :</h4>
                         <p>Latitude : {lat}</p>
@@ -84,14 +74,16 @@ class ToadFull extends React.Component {
                         {invMushroom && <p>Invincibility Mushroom</p>}
                     </div>                 
                     <h4>Listed on:</h4>
-                    <p><Moment format="YYYY/MM/DD">{date}</Moment></p>
-                    <button onClick={() => this.handleChange(available)}>{available ? 'Rent-A-Toad' : 'Return Home'}</button>
+                    <p><Moment format='YYYY/MM/DD'>{date}</Moment></p>
+                    <button onClick={() => this.handleChange(available)}>{available ? 'Rent-A-Toad' : 'Home-A-Toad'}</button>
+                    <br />
+                    <button onClick={() => this.props.toggleEdit(this.props.index)}>Edit-A-Toad</button>
                     <br />
                     <button onClick={() => this.props.deleteToad(this.props.index)}>Delete-A-Toad</button>    
                 </div>                            
             </div>                     
-        )
-    }
-}
+        );
+    };
+};
 
 export default ToadFull;

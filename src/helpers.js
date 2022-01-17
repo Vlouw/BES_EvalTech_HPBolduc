@@ -3,4 +3,4 @@ export function formatPrice(cents) {
     style: "currency",
     currency: "USD"
   });
-}
+};

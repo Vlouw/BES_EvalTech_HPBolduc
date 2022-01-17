@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 class MainPage extends React.Component {  
     // Validate propTypes
     static propTypes = {
         history : PropTypes.object,
-    }
+    };
 
     // Function goToRat
     goToRAT = event => {
@@ -20,10 +20,10 @@ class MainPage extends React.Component {
     render() {       
         // Return what we want to show on the main page
         return (                
-                <form className="mainPage-form" onSubmit={this.goToRAT}>
-                    <img src="/images/toad-mainpage.png" alt="Rent-A-Toad" />
+                <form className='mainPage-form' onSubmit={this.goToRAT}>
+                    <img src='/images/toad-mainpage.png' alt='Rent-A-Toad' />
                     <h2>Rent-A-Toad</h2>
-                    <button type="submit">Already for a mushroom!</button>
+                    <button type='submit'>Already for a mushroom!</button>
                 </form>       
         );
     };
